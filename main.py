@@ -5,6 +5,7 @@ import crud
 import schemas
 from db.engine import SessionLocal
 
+
 app = FastAPI()
 
 
@@ -22,7 +23,7 @@ def api_root() -> dict:
     return {"message": "Hello World"}
 
 
-@app.get("/author/{id}", response_model=schemas.Author)
+@app.get("/author/{id}/", response_model=schemas.Author)
 def get_author(author_id: int, db: Session = Depends(get_db)):
     db_author = crud.get_author(db=db, author_id=author_id)
 
